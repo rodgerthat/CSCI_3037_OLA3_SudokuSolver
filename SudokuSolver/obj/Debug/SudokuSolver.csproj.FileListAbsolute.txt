@@ -1,0 +1,10 @@
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.exe.config
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.exe
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.pdb
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csprojResolveAssemblyReference.cache
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.Form1.resources
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.Properties.Resources.resources
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csproj.GenerateResource.Cache
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csproj.CoreCompileInputs.cache
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.exe
+C:\Users\Joel\MTSU\CSCI_3037\OLAs\OLA3\CSCI_3037_OLA3_SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.pdb
