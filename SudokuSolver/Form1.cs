@@ -33,6 +33,14 @@ namespace SudokuSolver
             int width = theData.GetLength(1);
 
             this.dataGridView1.ColumnCount = width;
+
+            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            for (int s = 0; s < width; s++)
+            {
+                DataGridViewColumn column = dataGridView1.Columns[s];
+                column.Width = 20;
+            }
             
             for (int r = 0; r < height; r++)
             {
@@ -41,7 +49,12 @@ namespace SudokuSolver
 
                 for (int c = 0; c < width; c++)
                 {
-                    row.Cells[c].Value = theData[r, c];
+                    if (theData[r, c] == 0)
+                    {
+                        row.Cells[c].Value = null;
+                    } else { 
+                        row.Cells[c].Value = theData[r, c];
+                    }
                 }
 
                 this.dataGridView1.Rows.Add(row);
