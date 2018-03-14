@@ -9,20 +9,19 @@ namespace SudokuSolver
 {
     class Solver
     {
-        
+
         // default sudoku grid
         // 0 means unassigned cells
-        int[,] grid = {{3, 0, 6, 5, 0, 8, 4, 0, 0},
-                      {5, 2, 0, 0, 0, 0, 0, 0, 0},
-                      {0, 8, 7, 0, 0, 0, 0, 3, 1},
-                      {0, 0, 3, 0, 1, 0, 0, 8, 0},
-                      {9, 0, 0, 8, 6, 3, 0, 0, 5},
-                      {0, 5, 0, 0, 9, 0, 6, 0, 0},
-                      {1, 3, 0, 0, 0, 0, 2, 5, 0},
-                      {0, 0, 0, 0, 0, 0, 0, 7, 4},
-                      {0, 0, 5, 2, 0, 6, 3, 0, 0}
+        public int[,] grid = {{3, 0, 6, 5, 0, 8, 4, 0, 0},
+                              {5, 2, 0, 0, 0, 0, 0, 0, 0},
+                              {0, 8, 7, 0, 0, 0, 0, 3, 1},
+                              {0, 0, 3, 0, 1, 0, 0, 8, 0},
+                              {9, 0, 0, 8, 6, 3, 0, 0, 5},
+                              {0, 5, 0, 0, 9, 0, 6, 0, 0},
+                              {1, 3, 0, 0, 0, 0, 2, 5, 0},
+                              {0, 0, 0, 0, 0, 0, 0, 7, 4},
+                              {0, 0, 5, 2, 0, 6, 3, 0, 0}
         };
-
 
         // UNASSIGNED is used for empty cells in sudoku grid
         private const int UNASSIGNED = 0;
@@ -30,18 +29,13 @@ namespace SudokuSolver
         // N is used for size of Sudoku grid. Size will be NxN
         private const int N = 9;
 
-        // This function finds an entry in grid that is still unassigned
-        // private bool FindUnassignedLocation(int[,] grid, int row, int col);
-
-        // Checks whether it will be legal to assign num to the given row,col
-        // private bool isSafe(int[,] grid, int row, int col, int num);
-
         /* Takes a partially filled-in grid and attempts to assign values to
           all unassigned locations in such a way to meet the requirements
           for Sudoku solution (non-duplication across rows, columns, and boxes) */
-        bool SolveSudoku(int[,] grid)
+        // public bool SolveSudoku(int[,] grid)
+        public bool SolveSudoku(int[,] grid)
         {
-            int row, col;
+            int row = 0, col = 0;
 
             // If there is no unassigned location, we are done
             if (!FindUnassignedLocation(grid, row, col))
@@ -53,7 +47,7 @@ namespace SudokuSolver
             for (int num = 1; num <= 9; num++)
             {
                 // if looks promising
-                if (isSafe(grid, row, col, num))
+                if (IsSafe(grid, row, col, num))
                 {
                     // make tentative assignment
                     grid[row, col] = num;
@@ -64,11 +58,13 @@ namespace SudokuSolver
 
                     // failure, unmake & try again
                     grid[row, col] = UNASSIGNED;
-                } 
+                }
             }
             return false; // this triggers backtracking
         }
 
+        // This function finds an entry in grid that is still unassigned
+        // private bool FindUnassignedLocation(int[,] grid, int row, int col);
         /* Searches the grid to find an entry that is still unassigned. If
         found, the reference parameters row, col will be set the location
         that is unassigned, and true is returned. If no unassigned entries
@@ -108,20 +104,22 @@ namespace SudokuSolver
         {
             for (int row = 0; row < 3; row++)
                 for (int col = 0; col < 3; col++)
-                    if (grid[row+boxStartRow, col+boxStartCol] == num)
+                    if (grid[row + boxStartRow, col + boxStartCol] == num)
                         return true;
             return false;
         }
 
+        // Checks whether it will be legal to assign num to the given row,col
+        // private bool IsSafe(int[,] grid, int row, int col, int num);
         /* Returns a boolean which indicates whether it will be legal to assign
            num to the given row,col location. */
-        private bool isSafe(int[,] grid, int row, int col, int num)
+        private bool IsSafe(int[,] grid, int row, int col, int num)
         {
             /* Check if 'num' is not already placed in current row,
                current column and current 3x3 box */
             return !UsedInRow(grid, row, num) &&
                    !UsedInCol(grid, col, num) &&
-                   !UsedInBox(grid, row - row%3 , col - col%3, num);
+                   !UsedInBox(grid, row - row % 3, col - col % 3, num);
         }
 
         /* A utility function to print grid  */
@@ -136,6 +134,6 @@ namespace SudokuSolver
             }
         }
         */
-                                                                                                       1,1           Top
     }
+
 }
