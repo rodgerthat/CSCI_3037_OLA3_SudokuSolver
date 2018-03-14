@@ -54,7 +54,10 @@ namespace SudokuSolver
 
                     // return, if success, yay!
                     if (SolveSudoku(grid))
+                    {
+                        this.grid = grid;
                         return true;
+                    }
 
                     // failure, unmake & try again
                     grid[row, col] = UNASSIGNED;

@@ -39,6 +39,8 @@ namespace SudokuSolver
         private void InitializeDataGridView(int[,] grid)
         {
 
+            dataGridView1.ColumnHeadersVisible = false; // remove headers
+            dataGridView1.RowHeadersVisible = false; // remove headers
             this.dataGridView1.ColumnCount = gridSize;
 
             // grid cell alignment, centered
@@ -111,7 +113,11 @@ namespace SudokuSolver
 
             LoadDataGridView(this.grid, gridSize);
 
-            this.solver.SolveSudoku(this.grid);
+            // if the solver solves it
+            if (this.solver.SolveSudoku(this.grid))
+            {
+                LoadDataGridView(this.grid, gridSize);
+            }
             
         }
     }
