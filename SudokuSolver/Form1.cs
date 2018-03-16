@@ -15,7 +15,7 @@ namespace SudokuSolver
     {
 
         Solver solver = new Solver();
-        DefaultData defaultData = new DefaultData();
+        DataHandler dataHandler = new DataHandler();
 
         public int[,] grid;
 
@@ -24,8 +24,11 @@ namespace SudokuSolver
         {
             InitializeComponent();
 
-            // load the dataGridView with the initial grid data from the solver
-            InitializeDataGridView(this.defaultData.defaultGrid);
+            // load the dataGridView with the initial grid data from the datahandler
+            
+            // InitializeDataGridView(this.dataHandler.defaultGrid);
+            this.dataHandler.LoadGridFromFile();
+            InitializeDataGridView(this.dataHandler.loadedGrid);
 
         }
 
@@ -41,13 +44,13 @@ namespace SudokuSolver
 
             dataGridView1.ColumnHeadersVisible = false; // remove headers
             dataGridView1.RowHeadersVisible = false; // remove headers
-            this.dataGridView1.ColumnCount = this.defaultData.gridSize;
+            this.dataGridView1.ColumnCount = this.dataHandler.gridSize;
 
             // grid cell alignment, centered
             dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // set the column width of all the cells
-            for (int s = 0; s < this.defaultData.gridSize; s++)
+            for (int s = 0; s < this.dataHandler.gridSize; s++)
             {
                 DataGridViewColumn column = dataGridView1.Columns[s];
                 column.Width = 20;
@@ -64,12 +67,12 @@ namespace SudokuSolver
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
 
-            for (int r = 0; r < this.defaultData.gridSize; r++)
+            for (int r = 0; r < this.dataHandler.gridSize; r++)
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(this.dataGridView1);
 
-                for (int c = 0; c < this.defaultData.gridSize; c++) // lol c++
+                for (int c = 0; c < this.dataHandler.gridSize; c++) // lol c++
                 {
                     if (grid[r, c] == 0)
                     {
@@ -87,12 +90,12 @@ namespace SudokuSolver
         private int[,] GetDataGridViewData()
         {
             // gotta initialize this or the poor compiler will whine
-            int[,] newGrid = new int[this.defaultData.gridSize, this.defaultData.gridSize];
+            int[,] newGrid = new int[this.dataHandler.gridSize, this.dataHandler.gridSize];
 
             // get the data out of the current grid
             // and assign it to the grid 2D array
-            for (int i = 0; i < this.defaultData.gridSize; i++)
-                 for (int j = 0; j < this.defaultData.gridSize; j++)
+            for (int i = 0; i < this.dataHandler.gridSize; i++)
+                 for (int j = 0; j < this.dataHandler.gridSize; j++)
                     // the DataGridView will contain the occasional null value
                     // which, natch, can't be passed back into an int array
                     if (dataGridView1.Rows[i].Cells[j].Value == null)
@@ -113,7 +116,7 @@ namespace SudokuSolver
             this.solver.solvedGrid = GetDataGridViewData();
 
             // if the solver solves it
-            if (this.solver.SolveSudoku(this.solver.solvedGrid, this.defaultData.gridSize))
+            if (this.solver.SolveSudoku(this.solver.solvedGrid, this.dataHandler.gridSize))
             {
                 LoadDataGridView(this.solver.solvedGrid);
             } else
