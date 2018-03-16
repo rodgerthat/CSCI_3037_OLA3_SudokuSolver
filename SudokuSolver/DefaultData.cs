@@ -8,7 +8,13 @@ namespace SudokuSolver
 {
     class DefaultData
     {
-        private int[,] defaultGrid = new int[9, 9] {
+
+        public int gridSize = 9;     // the sudoku grid will always be a square
+
+
+        // default sudoku grid
+        // 0 means unassigned cells
+        public int[,] defaultGrid = new int[9, 9] {
             {3, 0, 6, 5, 0, 8, 4, 0, 0},
             {5, 2, 0, 0, 0, 0, 0, 0, 0},
             {0, 8, 7, 0, 0, 0, 0, 3, 1},
@@ -20,7 +26,7 @@ namespace SudokuSolver
             {0, 0, 5, 2, 0, 6, 3, 0, 0}
         };
 
-        public int[,] DefaultGrid { get => defaultGrid; set => defaultGrid = value; }
+
     }
 
 }
